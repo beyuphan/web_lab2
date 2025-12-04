@@ -18,6 +18,13 @@
                 <span style="color: red;">[{{ error }}]</span>
             {% endfor %}
         </p>
+        <p>
+            {{ form.konum.label }}<br>
+            {{ form.konum(size=50) }}<br>
+            {% for error in form.konum.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
         <p>{{ form.submit() }}</p>
 
     </form>

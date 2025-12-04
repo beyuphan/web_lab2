@@ -4,7 +4,7 @@ from app.forms import LoginForm, ForgetPasswordForm, RegistrationForm
 from flask_login import current_user, login_user, logout_user, login_required
 import sqlalchemy as sa
 from app import db
-from app.models import User
+from app.models import User, Post
 from app.forms import EditProfileForm
 from urllib.parse import urlsplit
 from datetime import datetime, timezone
@@ -102,12 +102,14 @@ def edit_profile():
     if form.validate_on_submit():
         current_user.username = form.username.data
         current_user.about_me = form.about_me.data
+        current_user.konum = form.konum.data
         db.session.commit()
         flash('Değişiklikler kaydedildi.')
         return redirect(url_for('edit_profile'))
     elif request.method == 'GET':
         form.username.data = current_user.username
         form.about_me.data = current_user.about_me
+        form.konum.data = current_user.konum
     return render_template('edit_profile.html', title='Edit Profile', form=form)
 
 @app.route('/logout')
