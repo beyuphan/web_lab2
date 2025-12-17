@@ -116,3 +116,7 @@ def edit_profile():
 def logout():
     logout_user()
     return redirect(url_for('index'))
+
+@app.route('/patlat')
+def patlat():
+    return 1 / 0
