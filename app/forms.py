@@ -55,3 +55,6 @@ class EditProfileForm(FlaskForm):
             user = db.session.scalar(sa.select(User).where(User.username == username.data))
             if user is not None:
                 raise ValidationError('Bu kullanıcı adı zaten kullanılıyor. Lütfen başka bir ad seçin.')
+            
+class EmptyForm(FlaskForm):
+    submit = SubmitField('Submit')

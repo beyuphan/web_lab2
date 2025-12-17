@@ -1,20 +1,56 @@
-2025-12-10 16:30:11,936 INFO: Web Programlama Lab startup [in C:\Users\eyuph\Desktop\web_lab2\app\__init__.py:43]
-2025-12-10 16:30:19,837 ERROR: Exception on /edit_profile [POST] [in C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask\app.py:875]
+2025-12-11 14:44:32,542 ERROR: Exception on /patlat [GET] [in C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask\app.py:875]
 Traceback (most recent call last):
-  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\sqlalchemy\engine\base.py", line 1967, in _exec_single_context
-    self.dialect.do_execute(
-    ~~~~~~~~~~~~~~~~~~~~~~~^
-        cursor, str_statement, effective_parameters, context
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\sqlalchemy\engine\default.py", line 951, in do_execute
-    cursor.execute(statement, parameters)
-    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
-sqlite3.IntegrityError: UNIQUE constraint failed: user.username
-
-The above exception was the direct cause of the following exception:
-
+  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\eyuph\Desktop\web_lab2\app\routes.py", line 122, in patlat
+    return 1 / 0
+           ~~^~~
+ZeroDivisionError: division by zero
+2025-12-11 14:45:04,370 ERROR: Exception on /patlat [GET] [in C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask\app.py:875]
+Traceback (most recent call last):
+  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\eyuph\Desktop\web_lab2\app\routes.py", line 122, in patlat
+    return 1 / 0
+           ~~^~~
+ZeroDivisionError: division by zero
+2025-12-11 14:47:11,248 ERROR: Exception on /patlat [GET] [in C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask\app.py:875]
+Traceback (most recent call last):
+  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\eyuph\Desktop\web_lab2\app\routes.py", line 122, in patlat
+    return 1 / 0
+           ~~^~~
+ZeroDivisionError: division by zero
+2025-12-17 19:27:52,723 INFO: Web Programlama Lab startup [in C:\Users\eyuph\Desktop\web_lab2\app\__init__.py:43]
+2025-12-17 19:32:29,369 INFO: Web Programlama Lab startup [in C:\Users\eyuph\Desktop\web_lab2\app\__init__.py:43]
+2025-12-17 19:32:38,347 INFO: Web Programlama Lab startup [in C:\Users\eyuph\Desktop\web_lab2\app\__init__.py:43]
+2025-12-17 20:12:39,403 INFO: Web Programlama Lab startup [in C:\Users\eyuph\Desktop\web_lab2\app\__init__.py:43]
+2025-12-17 20:12:39,432 INFO: Web Programlama Lab startup [in C:\Users\eyuph\Desktop\web_lab2\app\__init__.py:43]
+2025-12-17 20:12:39,432 INFO: Web Programlama Lab startup [in C:\Users\eyuph\Desktop\web_lab2\app\__init__.py:43]
+2025-12-17 20:13:34,430 INFO: Web Programlama Lab startup [in C:\Users\eyuph\Desktop\web_lab2\app\__init__.py:43]
+2025-12-17 20:13:46,433 ERROR: Exception on /user/test [GET] [in C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask\app.py:875]
 Traceback (most recent call last):
   File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
     response = self.full_dispatch_request()
@@ -28,113 +64,61 @@ Traceback (most recent call last):
   File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask_login\utils.py", line 290, in decorated_view
     return current_app.ensure_sync(func)(*args, **kwargs)
            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
-  File "C:\Users\eyuph\Desktop\web_lab2\app\routes.py", line 106, in edit_profile
-    db.session.commit()
-    ~~~~~~~~~~~~~~~~~^^
-  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\sqlalchemy\orm\scoping.py", line 597, in commit
-    return self._proxied.commit()
-           ~~~~~~~~~~~~~~~~~~~~^^
-  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\sqlalchemy\orm\session.py", line 2030, in commit
-    trans.commit(_to_root=True)
-    ~~~~~~~~~~~~^^^^^^^^^^^^^^^
-  File "<string>", line 2, in commit
-  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\sqlalchemy\orm\state_changes.py", line 137, in _go
-    ret_value = fn(self, *arg, **kw)
-  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\sqlalchemy\orm\session.py", line 1311, in commit
-    self._prepare_impl()
-    ~~~~~~~~~~~~~~~~~~^^
-  File "<string>", line 2, in _prepare_impl
-  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\sqlalchemy\orm\state_changes.py", line 137, in _go
-    ret_value = fn(self, *arg, **kw)
-  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\sqlalchemy\orm\session.py", line 1286, in _prepare_impl
-    self.session.flush()
-    ~~~~~~~~~~~~~~~~~~^^
-  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\sqlalchemy\orm\session.py", line 4331, in flush
-    self._flush(objects)
-    ~~~~~~~~~~~^^^^^^^^^
-  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\sqlalchemy\orm\session.py", line 4466, in _flush
-    with util.safe_reraise():
-         ~~~~~~~~~~~~~~~~~^^
-  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 224, in __exit__
-    raise exc_value.with_traceback(exc_tb)
-  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\sqlalchemy\orm\session.py", line 4427, in _flush
-    flush_context.execute()
-    ~~~~~~~~~~~~~~~~~~~~~^^
-  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\sqlalchemy\orm\unitofwork.py", line 466, in execute
-    rec.execute(self)
-    ~~~~~~~~~~~^^^^^^
-  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\sqlalchemy\orm\unitofwork.py", line 642, in execute
-    util.preloaded.orm_persistence.save_obj(
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
-        self.mapper,
-        ^^^^^^^^^^^^
-        uow.states_for_mapper_hierarchy(self.mapper, False, False),
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-        uow,
-        ^^^^
-    )
-    ^
-  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\sqlalchemy\orm\persistence.py", line 85, in save_obj
-    _emit_update_statements(
-    ~~~~~~~~~~~~~~~~~~~~~~~^
-        base_mapper,
-        ^^^^^^^^^^^^
-    ...<3 lines>...
-        update,
-        ^^^^^^^
-    )
-    ^
-  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\sqlalchemy\orm\persistence.py", line 912, in _emit_update_statements
-    c = connection.execute(
-        statement, multiparams, execution_options=execution_options
-    )
-  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\sqlalchemy\engine\base.py", line 1419, in execute
-    return meth(
-        self,
-        distilled_parameters,
-        execution_options or NO_OPTIONS,
-    )
-  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\sqlalchemy\sql\elements.py", line 526, in _execute_on_connection
-    return connection._execute_clauseelement(
-           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
-        self, distilled_params, execution_options
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\sqlalchemy\engine\base.py", line 1641, in _execute_clauseelement
-    ret = self._execute_context(
-        dialect,
-    ...<8 lines>...
-        cache_hit=cache_hit,
-    )
-  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\sqlalchemy\engine\base.py", line 1846, in _execute_context
-    return self._exec_single_context(
-           ~~~~~~~~~~~~~~~~~~~~~~~~~^
-        dialect, context, statement, parameters
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\sqlalchemy\engine\base.py", line 1986, in _exec_single_context
-    self._handle_dbapi_exception(
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
-        e, str_statement, effective_parameters, cursor, context
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\sqlalchemy\engine\base.py", line 2355, in _handle_dbapi_exception
-    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
-  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\sqlalchemy\engine\base.py", line 1967, in _exec_single_context
-    self.dialect.do_execute(
-    ~~~~~~~~~~~~~~~~~~~~~~~^
-        cursor, str_statement, effective_parameters, context
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\sqlalchemy\engine\default.py", line 951, in do_execute
-    cursor.execute(statement, parameters)
-    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
-sqlalchemy.exc.IntegrityError: (sqlite3.IntegrityError) UNIQUE constraint failed: user.username
-[SQL: UPDATE user SET username=?, about_me=?, konum=? WHERE user.id = ?]
-[parameters: ('test', '', '', 10)]
-(Background on this error at: https://sqlalche.me/e/20/gkpj)
-2025-12-11 14:07:51,896 INFO: Web Programlama Lab startup [in C:\Users\eyuph\Desktop\web_lab2\app\__init__.py:43]
+  File "C:\Users\eyuph\Desktop\web_lab2\app\routes.py", line 91, in user
+    return render_template('user.html', user=user, posts=posts, form=form)
+  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask\templating.py", line 149, in render_template
+    template = app.jinja_env.get_or_select_template(template_name_or_list)
+  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\jinja2\environment.py", line 1087, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\jinja2\environment.py", line 1016, in get_template
+    return self._load_template(name, globals)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\jinja2\environment.py", line 975, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\jinja2\loaders.py", line 138, in load
+    code = environment.compile(source, name, filename)
+  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\jinja2\environment.py", line 771, in compile
+    self.handle_exception(source=source_hint)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\eyuph\Desktop\web_lab2\app\templates\user.html", line 15, in template
+    {% elsif %}
+jinja2.exceptions.TemplateSyntaxError: Encountered unknown tag 'elsif'. Jinja was looking for the following tags: 'elif' or 'else' or 'endif'. The innermost block that needs to be closed is 'if'.
+2025-12-17 20:13:48,026 ERROR: Exception on /user/test [GET] [in C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask\app.py:875]
+Traceback (most recent call last):
+  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask_login\utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\eyuph\Desktop\web_lab2\app\routes.py", line 91, in user
+    return render_template('user.html', user=user, posts=posts, form=form)
+  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask\templating.py", line 149, in render_template
+    template = app.jinja_env.get_or_select_template(template_name_or_list)
+  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\jinja2\environment.py", line 1087, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\jinja2\environment.py", line 1016, in get_template
+    return self._load_template(name, globals)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\jinja2\environment.py", line 975, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\jinja2\loaders.py", line 138, in load
+    code = environment.compile(source, name, filename)
+  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\jinja2\environment.py", line 771, in compile
+    self.handle_exception(source=source_hint)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\eyuph\Desktop\web_lab2\app\templates\user.html", line 15, in template
+    {% elsif %}
+jinja2.exceptions.TemplateSyntaxError: Encountered unknown tag 'elsif'. Jinja was looking for the following tags: 'elif' or 'else' or 'endif'. The innermost block that needs to be closed is 'if'.
