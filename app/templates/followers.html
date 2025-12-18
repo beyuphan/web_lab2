@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+ <h1>Followers</h1>
+
+    <ul>
+            {% for follower in followers_list %}
+                <li>
+                    <a href="{{ url_for('user', username=follower.username) }}">
+                        {{ follower.username }}
+                    </a>
+                </li>
+            {% else %}
+                <li>Henüz takipçi yok.</li>
+            {% endfor %}
+        </ul>
+
+
+{% endblock %}

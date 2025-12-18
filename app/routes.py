@@ -79,6 +79,10 @@ def forget():
 @login_required
 def user(username):
     user = db.first_or_404(sa.select(User).where(User.username == username))
+
+    followers_list = db.session.scalars(user.followers.select()).all()
+    following_list = db.session.scalars(user.following.select()).all()
+
     posts = [
         {'author': user,
         'body': 'Deneme gönderi #1'},
@@ -88,7 +92,7 @@ def user(username):
     ]
 
     form = EmptyForm()
-    return render_template('user.html', user=user, posts=posts, form=form)
+    return render_template('user.html', user=user, posts=posts, form=form, followers_list=followers_list, following_list=following_list)
 
 
 @app.before_request
@@ -113,6 +117,23 @@ def edit_profile():
         form.about_me.data = current_user.about_me
         form.konum.data = current_user.konum
     return render_template('edit_profile.html', title='Edit Profile', form=form)
+
+@app.route('/user/<username>/followers', methods=['GET'])
+@login_required
+def followers(username):
+    user = db.first_or_404(sa.select(User).where(User.username == username))
+
+    followers_list = db.session.scalars(user.followers.select()).all()
+
+    return render_template('followers.html', user=user, followers_list=followers_list)
+
+@app.route('/user/<username>/following', methods=['GET'])
+@login_required
+def following(username):
+    user = db.first_or_404(sa.select(User).where(User.username == username))
+    following_list = db.session.scalars(user.following.select()).all()
+
+    return render_template('following.html', user=user, following_list=following_list)
 
 @app.route('/logout')
 def logout():
