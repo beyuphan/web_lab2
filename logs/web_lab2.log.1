@@ -1,4 +1,4 @@
-2025-12-18 14:43:07,155 ERROR: Exception on /following [GET] [in C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask\app.py:875]
+2025-12-24 18:42:19,051 ERROR: Exception on /index [GET] [in C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask\app.py:875]
 Traceback (most recent call last):
   File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
     response = self.full_dispatch_request()
@@ -12,8 +12,15 @@ Traceback (most recent call last):
   File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask_login\utils.py", line 290, in decorated_view
     return current_app.ensure_sync(func)(*args, **kwargs)
            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
-TypeError: following() missing 1 required positional argument: 'username'
-2025-12-18 14:43:07,944 ERROR: Exception on /followers [GET] [in C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask\app.py:875]
+  File "C:\Users\eyuph\Desktop\web_lab2\app\routes.py", line 24, in index
+    posts = db.session.scalars(current_user.following_posts()).all()
+                               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\eyuph\Desktop\web_lab2\app\models.py", line 76, in following_posts
+    Follower = sa.aliased(User)
+               ^^^^^^^^^^
+AttributeError: module 'sqlalchemy' has no attribute 'aliased'. Did you mean: 'alias'?
+2025-12-24 18:42:28,675 INFO: Web Programlama Lab startup [in C:\Users\eyuph\Desktop\web_lab2\app\__init__.py:43]
+2025-12-24 18:42:30,611 ERROR: Exception on /index [GET] [in C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask\app.py:875]
 Traceback (most recent call last):
   File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
     response = self.full_dispatch_request()
@@ -27,8 +34,33 @@ Traceback (most recent call last):
   File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask_login\utils.py", line 290, in decorated_view
     return current_app.ensure_sync(func)(*args, **kwargs)
            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
-TypeError: followers() missing 1 required positional argument: 'username'
-2025-12-18 14:43:08,686 ERROR: Exception on /following [GET] [in C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask\app.py:875]
+  File "C:\Users\eyuph\Desktop\web_lab2\app\routes.py", line 24, in index
+    posts = db.session.scalars(current_user.following_posts()).all()
+                               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\eyuph\Desktop\web_lab2\app\models.py", line 79, in following_posts
+    .join(Post.author.of_type(Author))
+          ~~~~~~~~~~~~~~~~~~~^^^^^^^^
+  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\sqlalchemy\orm\attributes.py", line 410, in of_type
+    comparator=self.comparator.of_type(entity),
+               ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^
+  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\sqlalchemy\orm\relationships.py", line 662, in of_type
+    return RelationshipProperty.Comparator(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self.prop,
+        ^^^^^^^^^^
+    ...<3 lines>...
+        extra_criteria=self._extra_criteria,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\sqlalchemy\orm\relationships.py", line 577, in __init__
+    if of_type:
+       ^^^^^^^
+  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\sqlalchemy\sql\elements.py", line 762, in __bool__
+    raise TypeError("Boolean value of this clause is not defined")
+TypeError: Boolean value of this clause is not defined
+2025-12-24 18:44:29,787 INFO: Web Programlama Lab startup [in C:\Users\eyuph\Desktop\web_lab2\app\__init__.py:43]
+2025-12-24 18:44:31,568 ERROR: Exception on / [GET] [in C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask\app.py:875]
 Traceback (most recent call last):
   File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
     response = self.full_dispatch_request()
@@ -42,8 +74,15 @@ Traceback (most recent call last):
   File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask_login\utils.py", line 290, in decorated_view
     return current_app.ensure_sync(func)(*args, **kwargs)
            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
-TypeError: following() missing 1 required positional argument: 'username'
-2025-12-18 14:43:09,383 ERROR: Exception on /followers [GET] [in C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask\app.py:875]
+  File "C:\Users\eyuph\Desktop\web_lab2\app\routes.py", line 24, in index
+    posts = db.session.scalars(current_user.following_posts()).all()
+                               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\eyuph\Desktop\web_lab2\app\models.py", line 75, in following_posts
+    Author = sa.aliased(User)
+             ^^^^^^^^^^
+AttributeError: module 'sqlalchemy' has no attribute 'aliased'. Did you mean: 'alias'?
+2025-12-24 18:46:05,353 INFO: Web Programlama Lab startup [in C:\Users\eyuph\Desktop\web_lab2\app\__init__.py:43]
+2025-12-24 18:46:06,556 ERROR: Exception on / [GET] [in C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask\app.py:875]
 Traceback (most recent call last):
   File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
     response = self.full_dispatch_request()
@@ -57,8 +96,15 @@ Traceback (most recent call last):
   File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask_login\utils.py", line 290, in decorated_view
     return current_app.ensure_sync(func)(*args, **kwargs)
            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
-TypeError: followers() missing 1 required positional argument: 'username'
-2025-12-18 14:43:09,944 ERROR: Exception on /following [GET] [in C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask\app.py:875]
+  File "C:\Users\eyuph\Desktop\web_lab2\app\routes.py", line 24, in index
+    posts = db.session.scalars(current_user.following_posts()).all()
+                               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\eyuph\Desktop\web_lab2\app\models.py", line 75, in following_posts
+    Author = sa.aliased(User)
+             ^^^^^^^^^^
+AttributeError: module 'sqlalchemy' has no attribute 'aliased'. Did you mean: 'alias'?
+2025-12-24 18:46:29,679 INFO: Web Programlama Lab startup [in C:\Users\eyuph\Desktop\web_lab2\app\__init__.py:43]
+2025-12-24 18:46:31,622 ERROR: Exception on / [GET] [in C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask\app.py:875]
 Traceback (most recent call last):
   File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
     response = self.full_dispatch_request()
@@ -72,51 +118,29 @@ Traceback (most recent call last):
   File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask_login\utils.py", line 290, in decorated_view
     return current_app.ensure_sync(func)(*args, **kwargs)
            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
-TypeError: following() missing 1 required positional argument: 'username'
-2025-12-18 14:43:12,018 ERROR: Exception on /following [GET] [in C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask\app.py:875]
-Traceback (most recent call last):
-  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
-    response = self.full_dispatch_request()
-  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask\app.py", line 902, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
-           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
-  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask_login\utils.py", line 290, in decorated_view
-    return current_app.ensure_sync(func)(*args, **kwargs)
-           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
-TypeError: following() missing 1 required positional argument: 'username'
-2025-12-18 14:44:02,881 INFO: Web Programlama Lab startup [in C:\Users\eyuph\Desktop\web_lab2\app\__init__.py:43]
-2025-12-18 14:44:07,422 ERROR: Exception on /followers [GET] [in C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask\app.py:875]
-Traceback (most recent call last):
-  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
-    response = self.full_dispatch_request()
-  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask\app.py", line 902, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
-           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
-  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask_login\utils.py", line 290, in decorated_view
-    return current_app.ensure_sync(func)(*args, **kwargs)
-           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
-TypeError: followers() missing 1 required positional argument: 'username'
-2025-12-18 14:44:13,827 ERROR: Exception on /following [GET] [in C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask\app.py:875]
-Traceback (most recent call last):
-  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
-    response = self.full_dispatch_request()
-  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask\app.py", line 902, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
-           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
-  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask_login\utils.py", line 290, in decorated_view
-    return current_app.ensure_sync(func)(*args, **kwargs)
-           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
-TypeError: following() missing 1 required positional argument: 'username'
-2025-12-18 14:45:12,352 INFO: Web Programlama Lab startup [in C:\Users\eyuph\Desktop\web_lab2\app\__init__.py:43]
+  File "C:\Users\eyuph\Desktop\web_lab2\app\routes.py", line 24, in index
+    posts = db.session.scalars(current_user.following_posts()).all()
+                               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\eyuph\Desktop\web_lab2\app\models.py", line 79, in following_posts
+    .join(Post.author.of_type(Author))
+          ~~~~~~~~~~~~~~~~~~~^^^^^^^^
+  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\sqlalchemy\orm\attributes.py", line 410, in of_type
+    comparator=self.comparator.of_type(entity),
+               ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^
+  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\sqlalchemy\orm\relationships.py", line 662, in of_type
+    return RelationshipProperty.Comparator(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self.prop,
+        ^^^^^^^^^^
+    ...<3 lines>...
+        extra_criteria=self._extra_criteria,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\sqlalchemy\orm\relationships.py", line 577, in __init__
+    if of_type:
+       ^^^^^^^
+  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\sqlalchemy\sql\elements.py", line 762, in __bool__
+    raise TypeError("Boolean value of this clause is not defined")
+TypeError: Boolean value of this clause is not defined
+2025-12-24 18:47:51,710 INFO: Web Programlama Lab startup [in C:\Users\eyuph\Desktop\web_lab2\app\__init__.py:43]

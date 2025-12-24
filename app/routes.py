@@ -5,28 +5,25 @@ from flask_login import current_user, login_user, logout_user, login_required
 import sqlalchemy as sa
 from app import db
 from app.models import User, Post
-from app.forms import EditProfileForm, EmptyForm
+from app.forms import EditProfileForm, EmptyForm, PostForm
 from urllib.parse import urlsplit
 from datetime import datetime, timezone
 
-@app.route('/')
-@app.route('/index')
+@app.route('/', methods=['GET', 'POST'])
+@app.route('/index', methods=['GET', 'POST'])
 @login_required
 def index():
-    user = {'username' : "Yüce Eyüphan BİNİCİ"}
-    posts = [
-        {
-            'author': {'username': 'Ahmet'},
-            'body': 'Beautiful day in Samsun!'
-        },
-        {
-            'author': {'username': 'Hami'},
-            'body': 'The Avengers movie was so cool!'
-        }
+    form = PostForm()
+    if form.validate_on_submit():
+        post = Post(body=form.post.data, author=current_user)
+        db.session.add(post)
+        db.session.commit()
+        flash('Gönderi başarıyla eklendi!')
+        return redirect(url_for('index'))
 
-    ]
+    posts = db.session.scalars(current_user.following_posts()).all()
 
-    return render_template('index.html', title='Home', posts=posts)
+    return render_template("index.html", title='Home', form=form, posts=posts)
 
 
 @app.route('/about')
@@ -83,13 +80,7 @@ def user(username):
     followers_list = db.session.scalars(user.followers.select()).all()
     following_list = db.session.scalars(user.following.select()).all()
 
-    posts = [
-        {'author': user,
-        'body': 'Deneme gönderi #1'},
-
-        {'author': user,
-        'body': 'Deneme gönderi #2'}
-    ]
+    posts = db.session.scalars(user.owner_posts()).all()
 
     form = EmptyForm()
     return render_template('user.html', user=user, posts=posts, form=form, followers_list=followers_list, following_list=following_list)
@@ -181,3 +172,10 @@ def unfollow(username):
         return redirect(url_for('user', username=username))
     else:
         return redirect(url_for('index'))
+    
+@app.route('/explore')
+@login_required
+def explore():
+    query=sa.select(Post).order_by(Post.timestamp.desc())
+    posts = db.session.scalars(query).all()
+    return render_template('index.html', title='Explore', posts=posts)

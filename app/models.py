@@ -72,14 +72,20 @@ class User(UserMixin,db.Model):
         query = sa.select(sa.func.count()).select_from(self.following.select().subquery())
         return db.session.scalar(query)
     def following_posts(self):
-        Author = sa.aliased(User)
-        Follower = sa.aliased(User)
+        Author = so.aliased(User)
+        Follower = so.aliased(User)
         return(
             sa.select(Post)
             .join(Post.author.of_type(Author))
             .join(Author.followers.of_type(Follower), isouter=True)
             .where(sa.or_(Follower.id == self.id, Author.id == self.id,))
             .group_by(Post)
+            .order_by(Post.timestamp.desc())
+        )
+    def owner_posts(self):
+        return(
+            sa.select(Post)
+            .where(Post.user_id == self.id)
             .order_by(Post.timestamp.desc())
         )
 
