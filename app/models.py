@@ -19,6 +19,13 @@ followers = sa.Table(
     sa.Column('followed_id', sa.Integer, sa.ForeignKey('user.id'), primary_key=True)
 )
 
+bookmarks = sa.Table(
+    'bookmarks',
+    db.metadata,
+    sa.Column('user_id', sa.Integer, sa.ForeignKey('user.id'), primary_key=True),
+    sa.Column('post_id', sa.Integer, sa.ForeignKey('post.id'), primary_key=True),
+    sa.Column('timestamp', sa.DateTime, default=lambda: datetime.now(timezone.utc))
+)
 
 class User(UserMixin,db.Model): 
     id: so.Mapped[int] = so.mapped_column(primary_key=True)
@@ -32,6 +39,12 @@ class User(UserMixin,db.Model):
     last_seen: so.Mapped[Optional[datetime]] = so.mapped_column(default=lambda:datetime.now(timezone.utc))
     konum: so.Mapped[Optional[str]] = so.mapped_column(sa.String(100))
     
+    bookmarked_posts: so.WriteOnlyMapped['Post'] = so.relationship(
+        secondary=bookmarks,
+        back_populates='bookmarked_by',
+        passive_deletes=True
+    )
+
     def __repr__(self):
         return '<User {}>'.format(self.username)
     
@@ -89,6 +102,44 @@ class User(UserMixin,db.Model):
             .order_by(Post.timestamp.desc())
         )
 
+
+    def bookmark(self, post):
+        if not self.has_bookmarked(post):
+            stmt = bookmarks.insert().values(
+                user_id=self.id, 
+                post_id=post.id, 
+                timestamp=datetime.now(timezone.utc)
+            )
+            db.session.execute(stmt)
+
+    def unbookmark(self, post):
+        if self.has_bookmarked(post):
+            stmt = bookmarks.delete().where(
+                bookmarks.c.user_id == self.id,
+                bookmarks.c.post_id == post.id
+            )
+            db.session.execute(stmt)
+
+    def has_bookmarked(self, post):
+        query = self.bookmarked_posts.select().where(Post.id == post.id)
+        return db.session.scalar(query) is not None
+    
+    def bookmarked_posts_list(self, sort_by='bookmark_newest'):
+        query = sa.select(Post).join(bookmarks, (bookmarks.c.post_id == Post.id)).where(bookmarks.c.user_id == self.id)
+        
+        if sort_by == 'bookmark_newest':
+            query = query.order_by(bookmarks.c.timestamp.desc()) 
+        elif sort_by == 'bookmark_oldest':
+            query = query.order_by(bookmarks.c.timestamp.asc())  
+        elif sort_by == 'post_newest':
+            query = query.order_by(Post.timestamp.desc())        
+        elif sort_by == 'post_oldest':
+            query = query.order_by(Post.timestamp.asc())         
+        else:
+            query = query.order_by(bookmarks.c.timestamp.desc()) 
+            
+        return query
+    
 class Post(db.Model):
     id: so.Mapped[int] = so.mapped_column(primary_key=True)
     body: so.Mapped[str] = so.mapped_column(sa.String(140))
@@ -101,6 +152,11 @@ class Post(db.Model):
 
     def __repr__(self):
         return '<Post {}>'.format(self.body)
+    
+    bookmarked_by: so.WriteOnlyMapped['User'] = so.relationship(
+        secondary=bookmarks,
+        back_populates='bookmarked_posts'
+    )
     
 
 class Comment(db.Model):

@@ -1,4 +1,4 @@
-2025-12-17 20:35:33,623 ERROR: Exception on / [GET] [in C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask\app.py:875]
+2025-12-24 18:47:54,917 ERROR: Exception on / [GET] [in C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask\app.py:875]
 Traceback (most recent call last):
   File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
     response = self.full_dispatch_request()
@@ -12,53 +12,42 @@ Traceback (most recent call last):
   File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask_login\utils.py", line 290, in decorated_view
     return current_app.ensure_sync(func)(*args, **kwargs)
            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
-  File "C:\Users\eyuph\Desktop\web_lab2\app\routes.py", line 29, in index
-    query = current_user.followed_posts()
-            ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-AttributeError: 'User' object has no attribute 'followed_posts'. Did you mean: 'following_posts'?
-2025-12-17 20:36:08,187 INFO: Web Programlama Lab startup [in C:\Users\eyuph\Desktop\web_lab2\app\__init__.py:43]
-2025-12-17 23:54:37,916 INFO: Web Programlama Lab startup [in C:\Users\eyuph\Desktop\web_lab2\app\__init__.py:43]
-2025-12-17 23:55:26,186 INFO: Web Programlama Lab startup [in C:\Users\eyuph\Desktop\web_lab2\app\__init__.py:43]
-2025-12-17 23:59:50,432 INFO: Web Programlama Lab startup [in C:\Users\eyuph\Desktop\web_lab2\app\__init__.py:43]
-2025-12-17 23:59:59,582 ERROR: Exception on /user/test2 [GET] [in C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask\app.py:875]
-Traceback (most recent call last):
-  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
-    response = self.full_dispatch_request()
-  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask\app.py", line 902, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
-           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
-  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask_login\utils.py", line 290, in decorated_view
-    return current_app.ensure_sync(func)(*args, **kwargs)
-           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
-  File "C:\Users\eyuph\Desktop\web_lab2\app\routes.py", line 91, in user
-    return render_template('user.html', user=user, posts=posts, form=form)
-  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask\templating.py", line 150, in render_template
-    return _render(app, template, context)
-  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask\templating.py", line 131, in _render
-    rv = template.render(context)
-  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\jinja2\environment.py", line 1295, in render
-    self.environment.handle_exception()
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
-  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\jinja2\environment.py", line 942, in handle_exception
-    raise rewrite_traceback_stack(source=source)
-  File "C:\Users\eyuph\Desktop\web_lab2\app\templates\user.html", line 1, in top-level template code
-    {% extends "base.html" %}
-  File "C:\Users\eyuph\Desktop\web_lab2\app\templates\base.html", line 37, in top-level template code
-    {% block content %}{% endblock %}
-    ^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\eyuph\Desktop\web_lab2\app\templates\user.html", line 10, in block 'content'
-    {% for follower in user.followers %}
-    ^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\sqlalchemy\orm\writeonly.py", line 577, in __iter__
-    raise TypeError(
+  File "C:\Users\eyuph\Desktop\web_lab2\app\routes.py", line 24, in index
+    posts = db.session.scalars(current_user.following_posts).all()
+            ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\sqlalchemy\orm\scoping.py", line 1891, in scalars
+    return self._proxied.scalars(
+           ~~~~~~~~~~~~~~~~~~~~~^
+        statement,
+        ^^^^^^^^^^
     ...<3 lines>...
+        **kw,
+        ^^^^^
     )
-TypeError: WriteOnly collections don't support iteration in-place; to query for collection items, use the select() method to produce a SQL statement and execute it with session.scalars().
-2025-12-18 00:00:01,227 ERROR: Exception on /user/test2 [GET] [in C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask\app.py:875]
+    ^
+  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\sqlalchemy\orm\session.py", line 2459, in scalars
+    return self._execute_internal(
+           ~~~~~~~~~~~~~~~~~~~~~~^
+        statement,
+        ^^^^^^^^^^
+    ...<4 lines>...
+        **kw,
+        ^^^^^
+    ).scalars()
+    ^
+  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\sqlalchemy\orm\session.py", line 2147, in _execute_internal
+    statement = coercions.expect(roles.StatementRole, statement)
+  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\sqlalchemy\sql\coercions.py", line 395, in expect
+    resolved = impl._literal_coercion(
+        element, argname=argname, **kw
+    )
+  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\sqlalchemy\sql\coercions.py", line 634, in _literal_coercion
+    self._raise_for_expected(element, argname)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\sqlalchemy\sql\coercions.py", line 518, in _raise_for_expected
+    raise exc.ArgumentError(msg, code=code) from err
+sqlalchemy.exc.ArgumentError: Executable SQL or text() construct expected, got <bound method User.following_posts of <User test>>.
+2025-12-24 18:51:58,622 ERROR: Exception on /index [GET] [in C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask\app.py:875]
 Traceback (most recent call last):
   File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
     response = self.full_dispatch_request()
@@ -72,39 +61,43 @@ Traceback (most recent call last):
   File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask_login\utils.py", line 290, in decorated_view
     return current_app.ensure_sync(func)(*args, **kwargs)
            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
-  File "C:\Users\eyuph\Desktop\web_lab2\app\routes.py", line 91, in user
-    return render_template('user.html', user=user, posts=posts, form=form)
-  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask\templating.py", line 150, in render_template
-    return _render(app, template, context)
-  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask\templating.py", line 131, in _render
-    rv = template.render(context)
-  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\jinja2\environment.py", line 1295, in render
-    self.environment.handle_exception()
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
-  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\jinja2\environment.py", line 942, in handle_exception
-    raise rewrite_traceback_stack(source=source)
-  File "C:\Users\eyuph\Desktop\web_lab2\app\templates\user.html", line 1, in top-level template code
-    {% extends "base.html" %}
-  File "C:\Users\eyuph\Desktop\web_lab2\app\templates\base.html", line 37, in top-level template code
-    {% block content %}{% endblock %}
-    ^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\eyuph\Desktop\web_lab2\app\templates\user.html", line 10, in block 'content'
-    {% for follower in user.followers %}
-    ^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\sqlalchemy\orm\writeonly.py", line 577, in __iter__
-    raise TypeError(
+  File "C:\Users\eyuph\Desktop\web_lab2\app\routes.py", line 24, in index
+    posts = db.session.scalars(current_user.following_posts()).all()
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\sqlalchemy\orm\scoping.py", line 1891, in scalars
+    return self._proxied.scalars(
+           ~~~~~~~~~~~~~~~~~~~~~^
+        statement,
+        ^^^^^^^^^^
     ...<3 lines>...
+        **kw,
+        ^^^^^
     )
-TypeError: WriteOnly collections don't support iteration in-place; to query for collection items, use the select() method to produce a SQL statement and execute it with session.scalars().
-2025-12-18 00:07:30,886 INFO: Web Programlama Lab startup [in C:\Users\eyuph\Desktop\web_lab2\app\__init__.py:43]
-2025-12-18 00:10:13,313 INFO: Web Programlama Lab startup [in C:\Users\eyuph\Desktop\web_lab2\app\__init__.py:43]
-2025-12-18 14:04:24,783 INFO: Web Programlama Lab startup [in C:\Users\eyuph\Desktop\web_lab2\app\__init__.py:43]
-2025-12-18 14:31:16,785 INFO: Web Programlama Lab startup [in C:\Users\eyuph\Desktop\web_lab2\app\__init__.py:43]
-2025-12-18 14:37:38,335 INFO: Web Programlama Lab startup [in C:\Users\eyuph\Desktop\web_lab2\app\__init__.py:43]
-2025-12-18 14:38:35,907 INFO: Web Programlama Lab startup [in C:\Users\eyuph\Desktop\web_lab2\app\__init__.py:43]
-2025-12-18 14:40:00,745 INFO: Web Programlama Lab startup [in C:\Users\eyuph\Desktop\web_lab2\app\__init__.py:43]
-2025-12-18 14:43:00,927 INFO: Web Programlama Lab startup [in C:\Users\eyuph\Desktop\web_lab2\app\__init__.py:43]
-2025-12-18 14:43:05,200 ERROR: Exception on /following [GET] [in C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask\app.py:875]
+    ^
+  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\sqlalchemy\orm\session.py", line 2459, in scalars
+    return self._execute_internal(
+           ~~~~~~~~~~~~~~~~~~~~~~^
+        statement,
+        ^^^^^^^^^^
+    ...<4 lines>...
+        **kw,
+        ^^^^^
+    ).scalars()
+    ^
+  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\sqlalchemy\orm\session.py", line 2147, in _execute_internal
+    statement = coercions.expect(roles.StatementRole, statement)
+  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\sqlalchemy\sql\coercions.py", line 395, in expect
+    resolved = impl._literal_coercion(
+        element, argname=argname, **kw
+    )
+  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\sqlalchemy\sql\coercions.py", line 634, in _literal_coercion
+    self._raise_for_expected(element, argname)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\sqlalchemy\sql\coercions.py", line 518, in _raise_for_expected
+    raise exc.ArgumentError(msg, code=code) from err
+sqlalchemy.exc.ArgumentError: Executable SQL or text() construct expected, got <bound method User.following_posts of <User test6>>.
+2025-12-24 18:57:16,470 INFO: Web Programlama Lab startup [in C:\Users\eyuph\Desktop\web_lab2\app\__init__.py:43]
+2025-12-24 18:57:23,905 ERROR: Exception on / [GET] [in C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask\app.py:875]
 Traceback (most recent call last):
   File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
     response = self.full_dispatch_request()
@@ -118,4 +111,15 @@ Traceback (most recent call last):
   File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask_login\utils.py", line 290, in decorated_view
     return current_app.ensure_sync(func)(*args, **kwargs)
            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
-TypeError: following() missing 1 required positional argument: 'username'
+  File "C:\Users\eyuph\Desktop\web_lab2\app\routes.py", line 24, in index
+    posts = db.session.scalars(current_user.following_posts()).all()
+                               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\eyuph\Desktop\web_lab2\app\models.py", line 75, in following_posts
+    Author = sa.aliased(User)
+             ^^^^^^^^^^
+AttributeError: module 'sqlalchemy' has no attribute 'aliased'. Did you mean: 'alias'?
+2025-12-24 19:01:18,757 INFO: Web Programlama Lab startup [in C:\Users\eyuph\Desktop\web_lab2\app\__init__.py:43]
+2025-12-24 19:04:48,048 INFO: Web Programlama Lab startup [in C:\Users\eyuph\Desktop\web_lab2\app\__init__.py:43]
+2025-12-24 19:05:56,143 INFO: Web Programlama Lab startup [in C:\Users\eyuph\Desktop\web_lab2\app\__init__.py:43]
+2025-12-25 14:08:15,203 INFO: Web Programlama Lab startup [in C:\Users\eyuph\Desktop\web_lab2\app\__init__.py:43]
+2025-12-25 14:17:56,556 INFO: Web Programlama Lab startup [in C:\Users\eyuph\Desktop\web_lab2\app\__init__.py:43]

@@ -1,4 +1,4 @@
-2025-12-24 18:36:01,130 ERROR: Exception on / [GET] [in C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask\app.py:875]
+2025-12-25 14:34:07,799 ERROR: Exception on /explore [GET] [in C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask\app.py:875]
 Traceback (most recent call last):
   File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
     response = self.full_dispatch_request()
@@ -12,14 +12,32 @@ Traceback (most recent call last):
   File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask_login\utils.py", line 290, in decorated_view
     return current_app.ensure_sync(func)(*args, **kwargs)
            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
-  File "C:\Users\eyuph\Desktop\web_lab2\app\routes.py", line 24, in index
-    posts = db.session.scalars(current_user.following_posts()).all()
-                               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
-  File "C:\Users\eyuph\Desktop\web_lab2\app\models.py", line 75, in following_posts
-    Author = sa.aliased(User)
-             ^^^^^^^^^^
-AttributeError: module 'sqlalchemy' has no attribute 'aliased'. Did you mean: 'alias'?
-2025-12-24 18:36:14,111 ERROR: Exception on /index [GET] [in C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask\app.py:875]
+  File "C:\Users\eyuph\Desktop\web_lab2\app\routes.py", line 181, in explore
+    return render_template('index.html', title='Explore', posts=posts)
+  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask\templating.py", line 150, in render_template
+    return _render(app, template, context)
+  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask\templating.py", line 131, in _render
+    rv = template.render(context)
+  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\eyuph\Desktop\web_lab2\app\templates\index.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "C:\Users\eyuph\Desktop\web_lab2\app\templates\base.html", line 38, in top-level template code
+    {% block content %}{% endblock %}
+    ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eyuph\Desktop\web_lab2\app\templates\index.html", line 22, in block 'content'
+    {% include '_post.html' %}
+    ^^^^^^^^^^^^^^^^^
+  File "C:\Users\eyuph\Desktop\web_lab2\app\templates\_post.html", line 14, in top-level template code
+    {{ form.hidden_tag() }}
+    ^
+  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\jinja2\environment.py", line 490, in getattr
+    return getattr(obj, attribute)
+jinja2.exceptions.UndefinedError: 'form' is undefined
+2025-12-25 14:34:23,110 ERROR: Exception on /explore [GET] [in C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask\app.py:875]
 Traceback (most recent call last):
   File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
     response = self.full_dispatch_request()
@@ -33,15 +51,32 @@ Traceback (most recent call last):
   File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask_login\utils.py", line 290, in decorated_view
     return current_app.ensure_sync(func)(*args, **kwargs)
            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
-  File "C:\Users\eyuph\Desktop\web_lab2\app\routes.py", line 24, in index
-    posts = db.session.scalars(current_user.following_posts()).all()
-                               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
-  File "C:\Users\eyuph\Desktop\web_lab2\app\models.py", line 75, in following_posts
-    Author = sa.aliased(User)
-             ^^^^^^^^^^
-AttributeError: module 'sqlalchemy' has no attribute 'aliased'. Did you mean: 'alias'?
-2025-12-24 18:40:47,636 INFO: Web Programlama Lab startup [in C:\Users\eyuph\Desktop\web_lab2\app\__init__.py:43]
-2025-12-24 18:40:49,174 ERROR: Exception on / [GET] [in C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask\app.py:875]
+  File "C:\Users\eyuph\Desktop\web_lab2\app\routes.py", line 181, in explore
+    return render_template('index.html', title='Explore', posts=posts)
+  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask\templating.py", line 150, in render_template
+    return _render(app, template, context)
+  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask\templating.py", line 131, in _render
+    rv = template.render(context)
+  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\eyuph\Desktop\web_lab2\app\templates\index.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "C:\Users\eyuph\Desktop\web_lab2\app\templates\base.html", line 38, in top-level template code
+    {% block content %}{% endblock %}
+    ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eyuph\Desktop\web_lab2\app\templates\index.html", line 22, in block 'content'
+    {% include '_post.html' %}
+    ^^^^^^^^^^^^^^^^^
+  File "C:\Users\eyuph\Desktop\web_lab2\app\templates\_post.html", line 14, in top-level template code
+    {{ form.hidden_tag() }}
+    ^
+  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\jinja2\environment.py", line 490, in getattr
+    return getattr(obj, attribute)
+jinja2.exceptions.UndefinedError: 'form' is undefined
+2025-12-25 14:34:40,302 ERROR: Exception on /explore [GET] [in C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask\app.py:875]
 Traceback (most recent call last):
   File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
     response = self.full_dispatch_request()
@@ -55,75 +90,28 @@ Traceback (most recent call last):
   File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask_login\utils.py", line 290, in decorated_view
     return current_app.ensure_sync(func)(*args, **kwargs)
            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
-  File "C:\Users\eyuph\Desktop\web_lab2\app\routes.py", line 24, in index
-    posts = db.session.scalars(current_user.following_posts()).all()
-                               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
-  File "C:\Users\eyuph\Desktop\web_lab2\app\models.py", line 75, in following_posts
-    Author = sa.aliased(User)
-             ^^^^^^^^^^
-AttributeError: module 'sqlalchemy' has no attribute 'aliased'. Did you mean: 'alias'?
-2025-12-24 18:41:00,349 INFO: Web Programlama Lab startup [in C:\Users\eyuph\Desktop\web_lab2\app\__init__.py:43]
-2025-12-24 18:41:09,211 ERROR: Exception on /index [GET] [in C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask\app.py:875]
-Traceback (most recent call last):
-  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
-    response = self.full_dispatch_request()
-  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask\app.py", line 902, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
-           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
-  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask_login\utils.py", line 290, in decorated_view
-    return current_app.ensure_sync(func)(*args, **kwargs)
-           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
-  File "C:\Users\eyuph\Desktop\web_lab2\app\routes.py", line 24, in index
-    posts = db.session.scalars(current_user.following_posts()).all()
-                               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
-  File "C:\Users\eyuph\Desktop\web_lab2\app\models.py", line 75, in following_posts
-    Author = sa.aliased(User)
-             ^^^^^^^^^^
-AttributeError: module 'sqlalchemy' has no attribute 'aliased'. Did you mean: 'alias'?
-2025-12-24 18:41:27,615 ERROR: Exception on /index [GET] [in C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask\app.py:875]
-Traceback (most recent call last):
-  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
-    response = self.full_dispatch_request()
-  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask\app.py", line 902, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
-           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
-  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask_login\utils.py", line 290, in decorated_view
-    return current_app.ensure_sync(func)(*args, **kwargs)
-           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
-  File "C:\Users\eyuph\Desktop\web_lab2\app\routes.py", line 24, in index
-    posts = db.session.scalars(current_user.following_posts()).all()
-                               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
-  File "C:\Users\eyuph\Desktop\web_lab2\app\models.py", line 75, in following_posts
-    Author = sa.aliased(User)
-             ^^^^^^^^^^
-AttributeError: module 'sqlalchemy' has no attribute 'aliased'. Did you mean: 'alias'?
-2025-12-24 18:41:27,666 ERROR: Exception on /index [GET] [in C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask\app.py:875]
-Traceback (most recent call last):
-  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
-    response = self.full_dispatch_request()
-  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask\app.py", line 902, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
-           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
-  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask_login\utils.py", line 290, in decorated_view
-    return current_app.ensure_sync(func)(*args, **kwargs)
-           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
-  File "C:\Users\eyuph\Desktop\web_lab2\app\routes.py", line 24, in index
-    posts = db.session.scalars(current_user.following_posts()).all()
-                               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
-  File "C:\Users\eyuph\Desktop\web_lab2\app\models.py", line 75, in following_posts
-    Author = sa.aliased(User)
-             ^^^^^^^^^^
-AttributeError: module 'sqlalchemy' has no attribute 'aliased'. Did you mean: 'alias'?
-2025-12-24 18:42:16,854 INFO: Web Programlama Lab startup [in C:\Users\eyuph\Desktop\web_lab2\app\__init__.py:43]
+  File "C:\Users\eyuph\Desktop\web_lab2\app\routes.py", line 181, in explore
+    form = EmptyForm()
+  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask\templating.py", line 150, in render_template
+    return _render(app, template, context)
+  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask\templating.py", line 131, in _render
+    rv = template.render(context)
+  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\eyuph\Desktop\web_lab2\app\templates\index.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "C:\Users\eyuph\Desktop\web_lab2\app\templates\base.html", line 38, in top-level template code
+    {% block content %}{% endblock %}
+    ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eyuph\Desktop\web_lab2\app\templates\index.html", line 22, in block 'content'
+    {% include '_post.html' %}
+    ^^^^^^^^^^^^^^^^^
+  File "C:\Users\eyuph\Desktop\web_lab2\app\templates\_post.html", line 14, in top-level template code
+    {{ form.hidden_tag() }}
+    ^
+  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\jinja2\environment.py", line 490, in getattr
+    return getattr(obj, attribute)
+jinja2.exceptions.UndefinedError: 'form' is undefined

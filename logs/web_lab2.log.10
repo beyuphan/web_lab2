@@ -1,56 +1,4 @@
-2025-12-11 14:44:32,542 ERROR: Exception on /patlat [GET] [in C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask\app.py:875]
-Traceback (most recent call last):
-  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
-    response = self.full_dispatch_request()
-  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask\app.py", line 902, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
-           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
-  File "C:\Users\eyuph\Desktop\web_lab2\app\routes.py", line 122, in patlat
-    return 1 / 0
-           ~~^~~
-ZeroDivisionError: division by zero
-2025-12-11 14:45:04,370 ERROR: Exception on /patlat [GET] [in C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask\app.py:875]
-Traceback (most recent call last):
-  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
-    response = self.full_dispatch_request()
-  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask\app.py", line 902, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
-           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
-  File "C:\Users\eyuph\Desktop\web_lab2\app\routes.py", line 122, in patlat
-    return 1 / 0
-           ~~^~~
-ZeroDivisionError: division by zero
-2025-12-11 14:47:11,248 ERROR: Exception on /patlat [GET] [in C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask\app.py:875]
-Traceback (most recent call last):
-  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
-    response = self.full_dispatch_request()
-  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask\app.py", line 902, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
-           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
-  File "C:\Users\eyuph\Desktop\web_lab2\app\routes.py", line 122, in patlat
-    return 1 / 0
-           ~~^~~
-ZeroDivisionError: division by zero
-2025-12-17 19:27:52,723 INFO: Web Programlama Lab startup [in C:\Users\eyuph\Desktop\web_lab2\app\__init__.py:43]
-2025-12-17 19:32:29,369 INFO: Web Programlama Lab startup [in C:\Users\eyuph\Desktop\web_lab2\app\__init__.py:43]
-2025-12-17 19:32:38,347 INFO: Web Programlama Lab startup [in C:\Users\eyuph\Desktop\web_lab2\app\__init__.py:43]
-2025-12-17 20:12:39,403 INFO: Web Programlama Lab startup [in C:\Users\eyuph\Desktop\web_lab2\app\__init__.py:43]
-2025-12-17 20:12:39,432 INFO: Web Programlama Lab startup [in C:\Users\eyuph\Desktop\web_lab2\app\__init__.py:43]
-2025-12-17 20:12:39,432 INFO: Web Programlama Lab startup [in C:\Users\eyuph\Desktop\web_lab2\app\__init__.py:43]
-2025-12-17 20:13:34,430 INFO: Web Programlama Lab startup [in C:\Users\eyuph\Desktop\web_lab2\app\__init__.py:43]
-2025-12-17 20:13:46,433 ERROR: Exception on /user/test [GET] [in C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask\app.py:875]
+2025-12-18 14:45:14,489 ERROR: Exception on /following [GET] [in C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask\app.py:875]
 Traceback (most recent call last):
   File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
     response = self.full_dispatch_request()
@@ -64,29 +12,9 @@ Traceback (most recent call last):
   File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask_login\utils.py", line 290, in decorated_view
     return current_app.ensure_sync(func)(*args, **kwargs)
            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
-  File "C:\Users\eyuph\Desktop\web_lab2\app\routes.py", line 91, in user
-    return render_template('user.html', user=user, posts=posts, form=form)
-  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask\templating.py", line 149, in render_template
-    template = app.jinja_env.get_or_select_template(template_name_or_list)
-  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\jinja2\environment.py", line 1087, in get_or_select_template
-    return self.get_template(template_name_or_list, parent, globals)
-           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\jinja2\environment.py", line 1016, in get_template
-    return self._load_template(name, globals)
-           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
-  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\jinja2\environment.py", line 975, in _load_template
-    template = self.loader.load(self, name, self.make_globals(globals))
-  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\jinja2\loaders.py", line 138, in load
-    code = environment.compile(source, name, filename)
-  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\jinja2\environment.py", line 771, in compile
-    self.handle_exception(source=source_hint)
-    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\jinja2\environment.py", line 942, in handle_exception
-    raise rewrite_traceback_stack(source=source)
-  File "C:\Users\eyuph\Desktop\web_lab2\app\templates\user.html", line 15, in template
-    {% elsif %}
-jinja2.exceptions.TemplateSyntaxError: Encountered unknown tag 'elsif'. Jinja was looking for the following tags: 'elif' or 'else' or 'endif'. The innermost block that needs to be closed is 'if'.
-2025-12-17 20:13:48,026 ERROR: Exception on /user/test [GET] [in C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask\app.py:875]
+TypeError: following() missing 1 required positional argument: 'username'
+2025-12-18 14:46:06,277 INFO: Web Programlama Lab startup [in C:\Users\eyuph\Desktop\web_lab2\app\__init__.py:43]
+2025-12-18 14:46:08,250 ERROR: Exception on /following [GET] [in C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask\app.py:875]
 Traceback (most recent call last):
   File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
     response = self.full_dispatch_request()
@@ -100,25 +28,94 @@ Traceback (most recent call last):
   File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask_login\utils.py", line 290, in decorated_view
     return current_app.ensure_sync(func)(*args, **kwargs)
            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
-  File "C:\Users\eyuph\Desktop\web_lab2\app\routes.py", line 91, in user
-    return render_template('user.html', user=user, posts=posts, form=form)
-  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask\templating.py", line 149, in render_template
-    template = app.jinja_env.get_or_select_template(template_name_or_list)
-  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\jinja2\environment.py", line 1087, in get_or_select_template
-    return self.get_template(template_name_or_list, parent, globals)
-           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\jinja2\environment.py", line 1016, in get_template
-    return self._load_template(name, globals)
-           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
-  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\jinja2\environment.py", line 975, in _load_template
-    template = self.loader.load(self, name, self.make_globals(globals))
-  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\jinja2\loaders.py", line 138, in load
-    code = environment.compile(source, name, filename)
-  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\jinja2\environment.py", line 771, in compile
-    self.handle_exception(source=source_hint)
-    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\jinja2\environment.py", line 942, in handle_exception
-    raise rewrite_traceback_stack(source=source)
-  File "C:\Users\eyuph\Desktop\web_lab2\app\templates\user.html", line 15, in template
-    {% elsif %}
-jinja2.exceptions.TemplateSyntaxError: Encountered unknown tag 'elsif'. Jinja was looking for the following tags: 'elif' or 'else' or 'endif'. The innermost block that needs to be closed is 'if'.
+TypeError: following() missing 1 required positional argument: 'username'
+2025-12-18 14:46:11,984 ERROR: Exception on /following [GET] [in C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask\app.py:875]
+Traceback (most recent call last):
+  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask_login\utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+TypeError: following() missing 1 required positional argument: 'username'
+2025-12-18 14:46:39,463 ERROR: Exception on /following [GET] [in C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask\app.py:875]
+Traceback (most recent call last):
+  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask_login\utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+TypeError: following() missing 1 required positional argument: 'username'
+2025-12-18 14:47:25,720 INFO: Web Programlama Lab startup [in C:\Users\eyuph\Desktop\web_lab2\app\__init__.py:43]
+2025-12-18 14:47:59,732 INFO: Web Programlama Lab startup [in C:\Users\eyuph\Desktop\web_lab2\app\__init__.py:43]
+2025-12-18 14:48:12,419 INFO: Web Programlama Lab startup [in C:\Users\eyuph\Desktop\web_lab2\app\__init__.py:43]
+2025-12-18 14:48:24,814 INFO: Web Programlama Lab startup [in C:\Users\eyuph\Desktop\web_lab2\app\__init__.py:43]
+2025-12-18 15:00:33,757 INFO: Web Programlama Lab startup [in C:\Users\eyuph\Desktop\web_lab2\app\__init__.py:43]
+2025-12-24 18:31:54,378 INFO: Web Programlama Lab startup [in C:\Users\eyuph\Desktop\web_lab2\app\__init__.py:43]
+2025-12-24 18:31:56,368 ERROR: Exception on / [GET] [in C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask\app.py:875]
+Traceback (most recent call last):
+  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask_login\utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\eyuph\Desktop\web_lab2\app\routes.py", line 25, in index
+    posts = db.session.scalars(current_user.followed_posts()).all()
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'User' object has no attribute 'followed_posts'. Did you mean: 'following_posts'?
+2025-12-24 18:32:02,824 ERROR: Exception on /index [GET] [in C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask\app.py:875]
+Traceback (most recent call last):
+  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask_login\utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\eyuph\Desktop\web_lab2\app\routes.py", line 25, in index
+    posts = db.session.scalars(current_user.followed_posts()).all()
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'User' object has no attribute 'followed_posts'. Did you mean: 'following_posts'?
+2025-12-24 18:32:03,906 ERROR: Exception on /index [GET] [in C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask\app.py:875]
+Traceback (most recent call last):
+  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\eyuph\Desktop\myenv\Lib\site-packages\flask_login\utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\eyuph\Desktop\web_lab2\app\routes.py", line 25, in index
+    posts = db.session.scalars(current_user.followed_posts()).all()
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'User' object has no attribute 'followed_posts'. Did you mean: 'following_posts'?

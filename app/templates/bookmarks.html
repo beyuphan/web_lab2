@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div style="display: flex; justify-content: space-between; align-items: center;">
+        <h1>{{ title }}</h1>
+        
+        <form method="GET" action="{{ url_for('bookmarks') }}" style="margin-bottom: 20px;">
+            <label for="sort_by">Sırala:</label>
+            <select name="sort_by" id="sort_by" onchange="this.form.submit()">
+                <option value="bookmark_newest" {% if current_sort == 'bookmark_newest' %}selected{% endif %}>Kaydedilme (En Yeni)</option>
+                <option value="bookmark_oldest" {% if current_sort == 'bookmark_oldest' %}selected{% endif %}>Kaydedilme (En Eski)</option>
+                <option value="post_newest" {% if current_sort == 'post_newest' %}selected{% endif %}>Post Tarihi (En Yeni)</option>
+                <option value="post_oldest" {% if current_sort == 'post_oldest' %}selected{% endif %}>Post Tarihi (En Eski)</option>
+            </select>
+        </form>
+    </div>
+    
+    <hr>
+
+    {% if posts|length == 0 %}
+        <p>Henüz kaydedilmiş bir gönderi yok.</p>
+    {% else %}
+        {% for post in posts %}
+            {% include '_post.html' %}
+        {% endfor %}
+    {% endif %}
+    
+{% endblock %}

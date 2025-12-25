@@ -178,4 +178,48 @@ def unfollow(username):
 def explore():
     query=sa.select(Post).order_by(Post.timestamp.desc())
     posts = db.session.scalars(query).all()
-    return render_template('index.html', title='Explore', posts=posts)
+    form = EmptyForm()
+    return render_template('explore.html', title='Explore', posts=posts, form=form)
+
+@app.route('/bookmark/<int:post_id>', methods=['POST'])
+@login_required
+def bookmark_post(post_id):
+    form = EmptyForm()
+    if form.validate_on_submit():
+        post = db.session.scalar(sa.select(Post).where(Post.id == post_id))
+        if post is None:
+            flash('Post bulunamadı.')
+            return redirect(url_for('index'))
+        if current_user.has_bookmarked(post):
+            flash('Bu gönderi zaten kaydedilmiş.')
+        else:
+            current_user.bookmark(post)
+            db.session.commit()
+            flash('Gönderi kaydedildi!')
+    return redirect(request.referrer or url_for('index'))
+
+@app.route('/unbookmark/<int:post_id>', methods=['POST'])
+@login_required
+def unbookmark_post(post_id):
+    form = EmptyForm()
+    if form.validate_on_submit():
+        post = db.session.scalar(sa.select(Post).where(Post.id == post_id))
+        if post is None:
+            flash('Post bulunamadı.')
+            return redirect(url_for('index'))
+        if current_user.has_bookmarked(post):
+            current_user.unbookmark(post)
+            db.session.commit()
+            flash('Gönderi kaydedilenlerden çıkarıldı.')
+    return redirect(request.referrer or url_for('index'))
+
+@app.route('/bookmarks')
+@login_required
+def bookmarks():
+    sort_by = request.args.get('sort_by', 'bookmark_newest')
+    
+    query = current_user.bookmarked_posts_list(sort_by=sort_by)
+    posts = db.session.scalars(query).all()
+    
+    form = EmptyForm()
+    return render_template('bookmarks.html', title='Kaydedilenler', posts=posts, form=form, current_sort=sort_by)

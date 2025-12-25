@@ -1,6 +1,24 @@
 <table>
     <tr valign="top">
         <td><img src="{{ post.author.avatar(36) }}" alt="Author Avatar"></td>
-        <td><a href="{{ url_for('user', username=post.author.username) }}">{{ post.author.username }}</a> says: <br>{{ post.body }}</td>
+        <td><a href="{{ url_for('user', username=post.author.username) }}">{{ post.author.username }}</a> says: <br>{{ post.body }}
+        {% if current_user.is_authenticated %}
+                <div style="margin-top: 5px;">
+                {% if current_user.has_bookmarked(post) %}
+                    <form action="{{ url_for('unbookmark_post', post_id=post.id) }}" method="post" style="display:inline;">
+                        {{ form.hidden_tag() }}
+                        <input type="submit" value="Kaydı Kaldır" style="font-size: 0.8em; color: red;">
+                    </form>
+                {% else %}
+                    <form action="{{ url_for('bookmark_post', post_id=post.id) }}" method="post" style="display:inline;">
+                        {{ form.hidden_tag() }}
+                        <input type="submit" value="Kaydet" style="font-size: 0.8em; color: green;">
+                    </form>
+                {% endif %}
+                </div>
+            {% endif %}
+        
+        
+        </td>
     </tr>
 </table>
